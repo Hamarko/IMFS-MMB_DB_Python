@@ -57,12 +57,13 @@ CREATE TABLE `prules` (
 	PRIMARY KEY(`prule_id`)
 );
 
-# Table4: models_prule
-CREATE TABLE `models_prule` (
-	`model_id`	INTEGER,
-	`prule_id`	INTEGER,
-	`id`	INTEGER NOT NULL,
-	FOREIGN KEY(`prule_id`) REFERENCES `prules`(`prule_id`),
-	FOREIGN KEY(`model_id`) REFERENCES `models`(`model_id`),
-	PRIMARY KEY(`id`)
+# Table4: models_prules
+CREATE TABLE model_prules (
+ model_id integer,
+ prule_id integer,
+ PRIMARY KEY (model_id, prule_id),
+ FOREIGN KEY (model_id) REFERENCES models (model_id) 
+ ON DELETE CASCADE ON UPDATE NO ACTION,
+ FOREIGN KEY ([prule_id]) REFERENCES prules (prule_id) 
+ ON DELETE CASCADE ON UPDATE NO ACTION
 );
